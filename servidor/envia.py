@@ -2,6 +2,7 @@
 Servidor
 """
 import socket
+from comum.verifica import verifica_arquivo_existe
 
 meu_ip = 'ADICIONAR IP DO SERVIDOR'
 minha_porta = 7777
@@ -17,7 +18,7 @@ servidor.listen(1)
 
 conexao, endereco = servidor.accept()
 
-nome_do_arquivo = str(input('Digite o nome do arquivo a ser enviado: '))
+nome_do_arquivo = verifica_arquivo_existe()
 
 conexao.send(nome_do_arquivo.encode())
 

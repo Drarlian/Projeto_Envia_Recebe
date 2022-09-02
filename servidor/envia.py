@@ -2,9 +2,21 @@
 Servidor
 """
 import socket
-from comum.verifica import verifica_arquivo_existe
+# from comum.verifica import verifica_arquivo_existe
+def verifica_arquivo_existe():
+    while True:
+        nome_arquivo = str(input('Digite o nome do arquivo a ser enviado: '))
 
-meu_ip = 'ADICIONAR IP DO SERVIDOR'
+        try:
+            open(nome_arquivo, 'r').close()
+        except FileNotFoundError:
+            print('O arquivo informado não existe!')
+        else:
+            print('Achei!')
+            return nome_arquivo
+
+
+meu_ip = ''
 minha_porta = 7777
 
 meu_servidor = (meu_ip, minha_porta)

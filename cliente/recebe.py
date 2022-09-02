@@ -3,7 +3,7 @@ Cliente
 """
 import socket
 from time import time
-import os
+from comum.calcula import calcula_taxa_transferencia
 
 ip = 'ADICIONAR IP DO SERVIDOR'
 porta = 7777
@@ -30,11 +30,4 @@ with open(nome_do_arquivo, 'wb') as arquivo:
 
 print(f'{nome_do_arquivo} Recebido!')
 
-tamanho_arquivo = os.path.getsize(nome_do_arquivo)  # -> +/- 106629 bytes
-print(f'O tamanho do arquivo é: {tamanho_arquivo} bytes')
-
-tempo_total = tempo_final - tempo_inicial
-print(f'O tempo total é: {tempo_total} segundos')
-
-taxa_transferencia = tamanho_arquivo / tempo_total
-print(f'Taxa de Transferencia: {taxa_transferencia} b/s')
+calcula_taxa_transferencia(tempo_inicial, tempo_final, nome_do_arquivo)

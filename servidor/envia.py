@@ -30,6 +30,8 @@ servidor.listen(1)
 
 conexao, endereco = servidor.accept()
 
+print('Conectado ao cliente!!\n')
+
 nome_do_arquivo = verifica_arquivo_existe()
 
 conexao.send(nome_do_arquivo.encode())

@@ -7,13 +7,16 @@ from time import time
 def calcula_taxa_transferencia(temp_inicial, temp_final, nome_arquivo):
     import os
     tamanho_arquivo = os.path.getsize(f'../cliente/{nome_arquivo}')  # -> +/- 106629 bytes
-    print(f'O tamanho do arquivo é: {tamanho_arquivo} Bytes')
+    # print(f'O tamanho do arquivo é: {tamanho_arquivo} Bytes')
+
+    tamanho_arquivo = tamanho_arquivo / 125000
+    print(f'O tamanho do arquivo é {tamanho_arquivo} Megabits')
 
     tempo_total = temp_final - temp_inicial
-    print(f'O tempo total é: {tempo_total} segundos')
+    print(f'O tempo total de envio foi: {tempo_total} segundos')
 
     taxa_transferencia = tamanho_arquivo / tempo_total
-    print(f'Taxa de Transferencia: {taxa_transferencia} B/s')
+    print(f'Taxa de Transferencia: {taxa_transferencia} Mbps')
 
 
 # ip = 'ADICIONAR IP DO SERVIDOR'
@@ -25,7 +28,7 @@ meu_servidor = (ip, porta)
 cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 cliente.connect(meu_servidor)
-print('Conectado!!\n')
+print('Conectado ao servidor!!\n')
 
 nome_do_arquivo = cliente.recv(1024).decode()
 
